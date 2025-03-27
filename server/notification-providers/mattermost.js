@@ -42,7 +42,7 @@ class Mattermost extends NotificationProvider {
             const mattermostIconUrl = notification.mattermosticonurl;
             let iconEmoji = mattermostIconEmoji;
 
-            if (heartbeatJSON.msg === DOWN) {
+            if (heartbeatJSON.status === DOWN) {
                 let mattermostdowndata = {
                     username: mattermostUserName,
                     channel: mattermostChannel,
@@ -81,7 +81,7 @@ class Mattermost extends NotificationProvider {
                 };
                 await axios.post(notification.mattermostWebhookUrl, mattermostdowndata);
                 return okMsg;
-            } else if (heartbeatJSON.msg === UP) {
+            } else if (heartbeatJSON.status === UP) {
                 let mattermostupdata = {
                     username: mattermostUserName,
                     channel: mattermostChannel,
